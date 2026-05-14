@@ -1,4 +1,4 @@
-namespace TP02.Models
+namespace TP02.Models;
 
 public class sugeridorReceta{
     public string nombreCocinero {get;set;}
@@ -7,14 +7,15 @@ public class sugeridorReceta{
     public int presupuesto {get;set;}
     public int cantidad {get;set;}
 
-    public DateTime calcularEdad(){
-        fNacimiento = DateTime.Today - fNacimiento;
-        return fNacimiento;
+    public int calcularEdad(){
+        DateTime fHoy = DateTime.Today;
+        int edad = fHoy.Year - fNacimiento.Year;
+        return edad;
     }
 
     public string determinarPlato(){
         string platoRecomendado ="";
-        if (tipoComida = "caliente"){
+        if (tipoComida == "caliente"){
             if (presupuesto < 3000){
                 platoRecomendado = "Fideos con manteca";
             }
@@ -25,7 +26,7 @@ public class sugeridorReceta{
                 platoRecomendado = "Pollo al horno con guarnicion";
             }
         }
-        else if (tipoComida = "fria"){
+        else if (tipoComida == "fria"){
             if (presupuesto < 3000){
                 platoRecomendado = "Ensalada simple";
             }
@@ -41,7 +42,7 @@ public class sugeridorReceta{
     
     public int calcularTiempo(){
         int minutos = 0;
-        if (tipoComida = "caliente"){
+        if (tipoComida == "caliente"){
             if (cantidad >= 1 && cantidad <= 3){
                 minutos = 20;
             }
@@ -52,7 +53,7 @@ public class sugeridorReceta{
                 minutos = 80;
             }
         }
-        else if (tipoComida = "fria"){
+        else if (tipoComida == "fria"){
             if (cantidad >= 1 && cantidad <= 3){
                 minutos = 10;
             }
@@ -67,23 +68,57 @@ public class sugeridorReceta{
     }
 
     public string determinarDificultad(){
-        dificultad = "";
+        string dificultad = "";
         if (presupuesto < 3000){
             if (cantidad >= 1 && cantidad <= 3){
-                dificultad = "principiante";
+                dificultad = "Principiante";
             }
             else if (cantidad >= 4 && cantidad <= 7){
-                dificultad = "intermedio";
+                dificultad = "Intermedio";
             }
         }
         else if (presupuesto >= 3000 && presupuesto <= 7000){
-            if (cantidad >= 1 && cantidad <= 3){
-                dificultad = "intermedio";
-            }
-            else if (cantidad >= 4){
-                dificultad = "intermedio";
+            if (cantidad >= 1 && cantidad <= 7){
+                dificultad = "Intermedio";
             }
         }
-        else if ()
+        else if (presupuesto > 7000){
+            if (cantidad >= 1 && cantidad <= 7){
+                dificultad = "Intermedio";
+            }
+            else if (cantidad >= 8){
+                dificultad = "Avanzado";
+            }
+        }
+        return dificultad;
+    }
+
+    public string generarSaludo(){
+        string saludo = "";
+        if (DateTime.Now.Hour >= 6 && DateTime.Now.Hour <= 11){
+            saludo = "¡Buenos Dias!";
+        }
+        else if (DateTime.Now.Hour >= 12 && DateTime.Now.Hour <= 18){
+            saludo = "¡Buenas Tardes!";
+        }
+        else if (DateTime.Now.Hour >= 19 && DateTime.Now.Hour <= 5){
+            saludo = "¡Buenas Noches!";
+        }
+        return saludo;
+    }
+
+    public string generarTip(){
+        string tip = "";
+        int edad = calcularEdad();
+        if (edad < 18){
+            tip = "Cuidado al cocinar que se utilizan elementos peligrosos.";
+        }
+        else if (edad >= 18 && edad < 60){
+            tip = "¡Vos podes!";
+        }
+        else if (edad >= 60){
+            tip = "Las mejores recetas, en Recetify";
+        }
+        return tip;
     }
 }

@@ -15,7 +15,15 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        return View("Index");
+    }
+
+    public IActionResult generarSugerencia(sugeridorReceta datos){
+        ViewBag.Plato = datos.determinarPlato();
+        ViewBag.Tiempo = datos.calcularTiempo();
+        ViewBag.Dificultad = datos.determinarDificultad();
+        ViewBag.Sg = datos;
+        return View("Resultado");
     }
 
     public IActionResult Privacy()
