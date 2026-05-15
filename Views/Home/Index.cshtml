@@ -3,12 +3,12 @@
 }
 
 <form action = '@Url.Action("generarSugerencia", "Home")' method ="get">
-    Nombre completo: <input type="text" name="nombreCocinero"></br>
-    Fecha de Nacimiento: <input type="date" name="fNacimiento"></br>
-    Tipo de Comida: <input type="radio" name="tipoComida" value="caliente"> Caliente
+    <h2>Nombre completo:</h2> <input type="text" name="nombreCocinero" placeholder="Aqui tu nombre"></br>
+    <h2>Fecha de Nacimiento:</h2> <input type="date" name="fNacimiento"></br>
+    <h2>Tipo de Comida:</h2> <input type="radio" name="tipoComida" value="caliente"> Caliente
                     <input type="radio" name="tipoComida" value="fria"> Fria</br>
-    Presupuesto: <input type="number" name="presupuesto" min="1" placeholder="Mayor a 0"></br>
-    Cantidad de Personas: <input type="number" name="cantidad" min="1" max="20" placeholder="1-20"></br>
+    <h2>Presupuesto:</h2> <input type="number" name="presupuesto" min="1" placeholder="Mayor a 0"></br>
+    <h2>Cantidad de Personas:</h2> <input type="number" name="cantidad" min="1" max="20" placeholder="1-20"></br>
     <input type="submit" value="Entregar">
     <input type="reset"value="Reiniciar">
 </form>
